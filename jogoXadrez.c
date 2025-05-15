@@ -1,7 +1,28 @@
 #include <stdio.h>
 
+void moverTorre(int casas) { // Função recursiva 
+    if (casas > 0) {
+        printf("Torre Direita\n");
+        moverTorre(casas - 1);
+    }
+}
+void moverBispo() { 
+    for (int b = 0; b < 1; b++) {
+        printf("Bispo Vertical\n");
+        for (int b = 0; b < 5; b++) {
+            printf("Bispo Horizontal\n");
+        }
+    }
+}
+void moverRainha(int a) { // Função recursiva
+    if (a > 0) {
+        printf("Rainha Esquerda\n"); 
+        moverRainha(a - 1);      
+    }
+}
+
 int main() {
-    int option, c = 1, b = 1;
+    int option, c = 1;
     // Enquanto a option for 1 ou 2 o jogo continua, quando option for 3 sai do jogo.
     do {
         printf("### JOGO XADREZ ###\n");
@@ -17,27 +38,23 @@ int main() {
             case 1:
                 printf("### START ###\n");
                 // Mover a torre 5 casas para a direita
-                for (int a = 0; a < 5; a++) {
-                    printf("Torre Direita\n"); // Imprime a direção do movimento
-                }
+                moverTorre(5); // Chama a função moverTorre e imprime a direção do movimento
+
                 printf("\n");
-                // Move o bispo 5 casas na diagonal
-                for (int b = 0; b < 5; b++) {
-                    printf("Bispo Diagonal\n"); // Imprime a direção do movimento
-                }
+                // Move o bispo 1 casa na vertical e 5 na horizontal
+                moverBispo(); // Chama a função moverBispo e Imprime a direção do movimento
+                
                 printf("\n");
                 // Move a Rainha 8 casas para a esquerda
-                while (c <= 8) {
-                    printf("Rainha Esquerda\n"); // Imprime a direção do movimento
-                    c++;        
-                }
+                moverRainha(8); // Chama a função moverRainha e Imprime a direção do movimento
+
                 printf("\n");
                 // Move o cavalo 2  para baixo e 1 para a esquerda
-                while (b--) {
+                while (c--) {
                     for (int i = 0; i < 2; i++) {
-                        printf("Cavalo Baixo\n"); // imprime "Baixo" duas vezes
+                        printf("Cavalo Cima\n"); // imprime "Cima" duas vezes
                     }
-                    printf("Cavalo Esquerda\n"); // Imprime "Esquerda" uma vez
+                    printf("Cavalo direita\n"); // Imprime "Direita" uma vez
                 }
                 printf("\n");
                 break;
